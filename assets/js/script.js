@@ -5,9 +5,8 @@ const menuButton = document.getElementById("menu");
 let overlay = document.getElementById("overlay");
 let navbar = document.getElementById("nav");
 let menuHiddenIcon = document.querySelector(".nav-top i");
-let menuLinks = document.querySelectorAll(".nav-bar.active .nav-list a");
 let header = document.querySelector(".header");
-let menuLinksArray = Array.from(menuLinks);
+let menuLinksArray;
 
 // Event listener for scroll to toggle header class
 window.addEventListener("scroll", () => {
@@ -22,6 +21,16 @@ window.addEventListener("scroll", () => {
 menuButton.addEventListener("click", () => {
   navbar.classList.toggle("active");
   overlay.classList.toggle("active");
+
+  let menuLinks = document.querySelectorAll(".nav-bar.active a");
+  menuLinksArray = Array.from(menuLinks);
+  // Event listener for menu link clicks
+  menuLinksArray.forEach((element) => {
+    element.addEventListener("click", () => {
+      navbar.classList.remove("active");
+      overlay.classList.remove("active");
+    });
+  });
 });
 
 overlay.addEventListener("click", () => {
@@ -32,14 +41,6 @@ overlay.addEventListener("click", () => {
 menuHiddenIcon.addEventListener("click", () => {
   navbar.classList.toggle("active");
   overlay.classList.toggle("active");
-});
-
-// Event listener for menu link clicks
-menuLinksArray.forEach((element) => {
-  element.addEventListener("click", () => {
-    navbar.classList.toggle("active");
-    overlay.classList.toggle("active");
-  });
 });
 
 // FAQ section //
