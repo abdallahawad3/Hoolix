@@ -5,7 +5,7 @@ const menuButton = document.getElementById("menu");
 let overlay = document.getElementById("overlay");
 let navbar = document.getElementById("nav");
 let menuHiddenIcon = document.querySelector(".nav-top i");
-let menuLinks = document.querySelectorAll(".nav-list a");
+let menuLinks = document.querySelectorAll(".nav-bar.active .nav-list a");
 let header = document.querySelector(".header");
 let menuLinksArray = Array.from(menuLinks);
 
